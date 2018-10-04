@@ -5,7 +5,7 @@ namespace App\Models;
 class Post extends Model
 {
     protected $fillable = ['title', 'body', 'user_id', 'img_src'];
-    protected $hidden = ['created_at', 'updated_at', 'user_id', 'likes'];
+    protected $hidden = ['updated_at', 'user_id', 'likes'];
     protected $appends = ['like_counts', 'liked', 'comments', 'comment_counts', 'commented'];
 
     protected static $path = '/uploads/posts';
