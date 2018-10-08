@@ -10466,3 +10466,115 @@ a.text-dark:focus {
   }
 }
 
+html {
+  font-size: 62.5%;
+}
+
+body {
+  color: #14171a;
+  background: #e6ecf0;
+  font-size: 1.6rem;
+}
+
+*,
+*::after,
+*::before {
+  margin: 0px;
+  padding: 0px;
+}
+
+a:not([href]):not([tabindex]) {
+  color: #ed0058;
+}
+
+.navbar {
+  background-color: #ff2d7a;
+  margin-bottom: 0.8rem;
+  font-size: 2rem;
+}
+
+.navbar a {
+  color: #fff;
+  font-size: 1.6rem;
+}
+
+.container-fluid {
+  padding-right: 0px;
+  padding-left: 0px;
+}
+
+.posts li {
+  list-style: none;
+  background: #fff;
+  margin-bottom: 0.8rem;
+}
+
+.posts .header {
+  text-align: center;
+  padding: 0.8rem;
+  padding-bottom: 0px;
+  font-size: 2rem;
+}
+
+.posts .header .img {
+  width: 8rem;
+  height: 8rem;
+  margin: 0 auto;
+  border-radius: 50%;
+  border-bottom: 1px solid #ed0058;
+  background-size: cover;
+  background-position: center;
+}
+
+.posts .header span {
+  color: #c0c0c0;
+  font-style: italic;
+}
+
+.posts .header a::before,
+.posts .header a::after {
+  content: '\221D';
+  display: inline-block;
+  padding: 0.4rem 1.2rem;
+}
+
+.posts .header a::before {
+  -webkit-transform: rotateY(180deg);
+          transform: rotateY(180deg);
+}
+
+.posts .body {
+  display: block;
+  margin: 0px auto;
+  content: "";
+  border-bottom: 1px dashed #ddd;
+  padding: 0.8rem;
+  padding-bottom: 1.6rem;
+  text-align: center;
+  font-size: 2.4rem;
+}
+
+.posts .footer {
+  text-align: center;
+}
+
+.posts .footer a {
+  display: block;
+  padding: 0.8rem;
+}
+
+.posts .footer a::hover {
+  color: #ff2d7a;
+  background: rgba(200, 200, 200, 0.1);
+  cursor: pointer;
+}
+
+.loader {
+  text-align: center;
+  padding: 0.8rem;
+  width: 20rem;
+  margin: 0 auto;
+  background-color: #fff;
+  border-radius: 150px;
+}
+

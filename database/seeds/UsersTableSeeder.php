@@ -18,17 +18,19 @@ class UsersTableSeeder extends Seeder
         User::create([
             'name' => 'inara risyah',
             'email' => 'inara@securhat.com',
-            'password' => bcrypt('secret')
+            'password' => bcrypt('secret'),
+            'img' => '1.jpg'
         ]);
 
-        foreach (range(1, 2) as $key => $value) {
+        foreach (range(2, 3) as $key => $value) {
         	$name = $faker->firstName().' '.$faker->lastName();
         	$email = strtolower(str_replace(' ', '.', $name)).'@gmail.com';
 
         	User::create([
 	            'name' => $name,
 	            'email' => $email,
-	            'password' => bcrypt('secret')
+	            'password' => bcrypt('secret'),
+                'img' => $value.'.jpg'
 	        ]);
         }
     }

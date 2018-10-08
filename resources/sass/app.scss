@@ -7,3 +7,121 @@
 
 // Bootstrap
 @import '~bootstrap/scss/bootstrap';
+
+$primaryColor : #ff2d7a;
+$secondaryColor : #ed0058;
+
+html {
+    font-size: 62.5%;
+}
+
+body {
+    color: #14171a;
+    background: #e6ecf0;
+    font-size: 1.6rem;
+}
+
+*,
+*::after,
+*::before {
+    margin: 0px;
+    padding: 0px;
+}
+
+a:not([href]):not([tabindex]) {
+    color: $secondaryColor;
+}
+
+.navbar {
+    background-color: $primaryColor;
+    margin-bottom: 0.8rem;
+    font-size: 2rem;
+
+	a {
+	    color: #fff;
+	    font-size: 1.6rem;
+	}
+}
+
+.container-fluid{
+    padding-right: 0px;
+    padding-left: 0px;
+}
+
+.posts {
+	li {
+	    list-style: none;
+	    background: #fff;
+	    margin-bottom: 0.8rem;
+	}
+
+	.header {
+	    text-align: center;
+	    padding: 0.8rem;
+	    padding-bottom: 0px;
+	    font-size: 2rem;
+
+		.img {
+		    width: 8rem;
+		    height : 8rem;
+		    margin: 0 auto;
+		    border-radius: 50%;
+		    border-bottom: 1px solid $secondaryColor;
+		    background-size: cover;
+		    background-position: center;
+		}
+
+		span {
+		    color: #c0c0c0;
+		    font-style: italic;
+		}
+
+		a {
+			&::before,
+			&::after {
+			    content: '\221D';
+			    display: inline-block;
+			    padding: 0.4rem 1.2rem;
+			}
+
+			&::before{
+			    transform: rotateY(180deg)/* translateY(2px)*/;
+			}
+		}
+	}
+
+	.body {
+	    display: block;
+	    margin: 0px auto;
+	    content: "";
+	    border-bottom: 1px dashed #ddd;
+	    padding: 0.8rem;
+	    padding-bottom: 1.6rem;
+	    text-align: center;
+	    font-size: 2.4rem;
+	}
+
+	.footer {
+	    text-align: center;
+
+	    a {
+		    display: block;
+		    padding: 0.8rem;
+		}
+
+		a::hover {
+		    color: $primaryColor;
+		    background: rgba(200,200,200,0.1);
+		    cursor: pointer;
+		}
+	}
+}
+
+.loader {
+    text-align: center;
+    padding: 0.8rem;
+    width: 20rem;
+    margin: 0 auto;
+    background-color: #fff;
+    border-radius: 150px;
+}

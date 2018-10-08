@@ -13,18 +13,13 @@ use Illuminate\Http\Request;
 |
 */
 
-Route::middleware('auth:api')->get('/user', function (Request $request) {
-    return $request->user();
-});
-
-
 Route::group(['namespace' => 'API'], function () {
 	Route::prefix('/user')->group(function () {
 		Route::post('register', 'UserController@register');
 		Route::post('login', 'UserController@login');
 	});
 
-	//Route::group(['middleware' => ['auth:api']], function () {
+	Route::group(['middleware' => ['token']], function () {
 		Route::prefix('/post')->group(function () {
 			Route::get('/', 'PostController@index');
 			Route::post('/', 'PostController@store');
@@ -45,5 +40,5 @@ Route::group(['namespace' => 'API'], function () {
 			Route::post('/', 'CommentController@store');
 			Route::delete('/{id}', 'CommentController@destroy');
 		});
-	//});
+	});
 });

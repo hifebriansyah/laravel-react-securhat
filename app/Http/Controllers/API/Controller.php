@@ -29,6 +29,6 @@ class Controller extends \App\Http\Controllers\Controller
                 : ['data' => $collections->toArray()];
         }
 
-        return $collections = $this->noNull($collections);
+        return response()->json($this->noNull($collections));
     }
 }

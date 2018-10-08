@@ -16,6 +16,11 @@ Route::get('/', function () {
 });
 
 
+Route::get('/login', function () {
+    return view('login');
+});
+
+
 Route::get('/img', function()
 {
     return Image::make('/Applications/XAMPP/xamppfiles/htdocs/sch/storage/app/posts/5o3xDGOFBs42j2szxjSOXMM5S5FfKmitCfvjzhz0.jpeg')->resize(320, 240)->response('jpeg');

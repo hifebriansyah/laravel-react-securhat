@@ -13,6 +13,8 @@ class User extends Authenticatable
 
     protected $fillable = ['name', 'email', 'password', 'img'];
     protected $appends = ['img_src'];
+
+    const IMG_PATH = "uploads/users";
     
     protected $hidden = [
         'created_at',
@@ -109,6 +111,6 @@ class User extends Authenticatable
     public function getImgSrcAttribute()
     {
 
-        return ($this->img) ? 'path/'.$this->img : null;
+        return ($this->img) ? url($this::IMG_PATH.'/'.$this->img) : null;
     }
 }

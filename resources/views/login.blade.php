@@ -8,10 +8,30 @@
         <link href="{{url('/').mix('css/app.css')}}" rel="stylesheet" type="text/css">
         <meta name="csrf-token" content="{{ csrf_token() }}">
         <meta name="theme-color" content="#ff2d7a">
+
+        <style>
+            .form-group input {
+                padding: 1.6rem;
+                font-size: 1.6rem;
+                border-radius: 50px;
+            }
+
+            .component-login {
+                background: white;
+                padding: 1.6rem;
+                font-size: 2rem;
+            }
+
+            button.btn {
+                padding: 0.8rem 1.6rem;
+                font-size: 1.6rem;
+                border-radius: 50px;
+            }
+        </style>
     </head>
     <body>
         <div id="root" class="container-fluid"></div>
         <script>url = "{{url('/')}}";</script>
-        <script src="{{url('/').mix('js/apps/post.js')}}" ></script>
+        <script src="{{url('/').mix('js/apps/login.js')}}" ></script>
     </body>
 </html>
