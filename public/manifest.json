@@ -1,0 +1,10 @@
+{  
+   "background_color":"#e6ecf0",
+   "description":"Sebuah Curahan Hati.",
+   "display":"standalone",
+   "name":"Securhat",
+   "short_name":"Securhat",
+   "start_url":"/",
+   "theme_color":"#ff2d7a",
+   "scope":"/"
+}

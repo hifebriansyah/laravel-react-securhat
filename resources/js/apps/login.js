@@ -3,14 +3,16 @@ require('../bootstrap');
 import React from "react";
 import ReactDOM from "react-dom";
 import Login from '../components/Login';
-import Header from '../components/Header';
+import Navbar from '../components/Navbar';
 
-if (document.getElementById("root")) {
-    ReactDOM.render(
-    	<div>
-	    	<Header />
-	    	<Login />
-    	</div>
-    	, document.getElementById("root")
-    );
+class App extends React.Component {
+	render() {
+		return(
+			<div>
+		    	<Login />
+	    	</div>
+		)
+	}
 }
+
+ReactDOM.render(<App />, document.getElementById("root"));

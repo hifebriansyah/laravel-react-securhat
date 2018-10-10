@@ -11,14 +11,14 @@
 |
 */
 
-Route::get('/', function () {
+Route::get('/login', function () {
     return view('login');
 });
 
 
-Route::get('/post', function () {
-    return view('post');
-});
+Route::get('/{path?}', function () {
+    return view('main');
+})->where('path', '(.*)');
 
 
 Route::get('/img', function()

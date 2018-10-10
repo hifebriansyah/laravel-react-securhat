@@ -7,7 +7,15 @@
         <title>SCH</title>
         <link href="{{url('/').mix('css/app.css')}}" rel="stylesheet" type="text/css">
         <meta name="csrf-token" content="{{ csrf_token() }}">
+
+        <!-- Chrome App -->
+        <link rel="manifest" href="/manifest.json" />
+        <meta name="mobile-web-app-capable" content="yes" />
         <meta name="theme-color" content="#ff2d7a">
+
+        <!-- Safari App -->
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-title" content="Securhat">
 
         <style>
             .form-group input {
