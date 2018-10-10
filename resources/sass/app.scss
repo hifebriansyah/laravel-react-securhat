@@ -48,11 +48,22 @@ a:not([href]):not([tabindex]) {
     padding-left: 0px;
 }
 
-.posts {
+.component-posts {
+	margin-top: 0.8rem;
+	max-width: 576px;
+	margin-left: auto;
+	margin-right: auto;
+	
 	li {
 	    list-style: none;
 	    background: #fff;
 	    margin-bottom: 0.8rem;
+	}
+
+	@include media-breakpoint-up(sm) {
+		li {
+			border-radius: 3px;
+		}
 	}
 
 	.header {

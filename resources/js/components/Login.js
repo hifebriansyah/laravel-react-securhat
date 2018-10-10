@@ -1,6 +1,4 @@
 import React, { Component } from "react";
-import ReactDOM from "react-dom";
-import Header from './Header';
 
 class Login extends Component {
     constructor() {
@@ -24,9 +22,7 @@ class Login extends Component {
     handleSubmit(e) {  
         e.preventDefault();
 
-        var target = url+'/api/user/login';
-
-        fetch(target, {
+        fetch(url+'/api/user/login', {
                 headers: {
                     'Accept': 'application/json',
                     'Content-Type': 'application/json'
@@ -41,34 +37,30 @@ class Login extends Component {
                 return response.json();
             })
             .then(result => {
-                if(result.data) alert("ok");
+                if(result.data) if(result.data.token) {
+                    localStorage.setItem('token', result.data.token);
+                    window.location.replace('./post');
+                }
             });
     }
 
     render() {
         return (
-            <div>
-                <Header />
-                <div className='component-login'>
-    	            <form onSubmit={(e)=>this.handleSubmit(e)}>
-    					<div className='form-group'>
-    					   <label htmlFor='email'>Email address</label>
-    					   <input type='email' className='form-control' id='email' onChange={(e)=>this.handleInput('email', e)}  />
-    					</div>
-    					<div className='form-group'>
-    					   <label htmlFor='password'>Password</label>
-    					   <input type='password' className='form-control' id='password' onChange={(e)=>this.handleInput('password', e)} />
-    					</div>
-    					<button type='submit' className='btn btn-primary'>Submit</button>
-    				</form>
-                </div>
+            <div className='component-login'>
+	            <form onSubmit={(e)=>this.handleSubmit(e)}>
+					<div className='form-group'>
+					   <label htmlFor='email'>Email address</label>
+					   <input type='email' className='form-control' id='email' onChange={(e)=>this.handleInput('email', e)}  />
+					</div>
+					<div className='form-group'>
+					   <label htmlFor='password'>Password</label>
+					   <input type='password' className='form-control' id='password' onChange={(e)=>this.handleInput('password', e)} />
+					</div>
+					<button type='submit' className='btn btn-primary'>Submit</button>
+				</form>
             </div>
         );
     }
 }
 
 export default Login;
-
-if (document.getElementById("root")) {
-    ReactDOM.render(<Login />, document.getElementById("root"));
-}

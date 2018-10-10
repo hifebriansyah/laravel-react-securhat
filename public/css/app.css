@@ -10503,20 +10503,33 @@ a:not([href]):not([tabindex]) {
   padding-left: 0px;
 }
 
-.posts li {
+.component-posts {
+  margin-top: 0.8rem;
+  max-width: 576px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.component-posts li {
   list-style: none;
   background: #fff;
   margin-bottom: 0.8rem;
 }
 
-.posts .header {
+@media (min-width: 576px) {
+  .component-posts li {
+    border-radius: 3px;
+  }
+}
+
+.component-posts .header {
   text-align: center;
   padding: 0.8rem;
   padding-bottom: 0px;
   font-size: 2rem;
 }
 
-.posts .header .img {
+.component-posts .header .img {
   width: 8rem;
   height: 8rem;
   margin: 0 auto;
@@ -10526,24 +10539,24 @@ a:not([href]):not([tabindex]) {
   background-position: center;
 }
 
-.posts .header span {
+.component-posts .header span {
   color: #c0c0c0;
   font-style: italic;
 }
 
-.posts .header a::before,
-.posts .header a::after {
+.component-posts .header a::before,
+.component-posts .header a::after {
   content: '\221D';
   display: inline-block;
   padding: 0.4rem 1.2rem;
 }
 
-.posts .header a::before {
+.component-posts .header a::before {
   -webkit-transform: rotateY(180deg);
           transform: rotateY(180deg);
 }
 
-.posts .body {
+.component-posts .body {
   display: block;
   margin: 0px auto;
   content: "";
@@ -10554,16 +10567,16 @@ a:not([href]):not([tabindex]) {
   font-size: 2.4rem;
 }
 
-.posts .footer {
+.component-posts .footer {
   text-align: center;
 }
 
-.posts .footer a {
+.component-posts .footer a {
   display: block;
   padding: 0.8rem;
 }
 
-.posts .footer a::hover {
+.component-posts .footer a::hover {
   color: #ff2d7a;
   background: rgba(200, 200, 200, 0.1);
   cursor: pointer;

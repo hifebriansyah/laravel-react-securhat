@@ -60,7 +60,7 @@
 /******/ 	__webpack_require__.p = "/";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 45);
+/******/ 	return __webpack_require__(__webpack_require__.s = 46);
 /******/ })
 /************************************************************************/
 /******/ ([
@@ -378,6 +378,20 @@ module.exports = {
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
+
+
+if (false) {
+  module.exports = require('./cjs/react.production.min.js');
+} else {
+  module.exports = __webpack_require__(38);
+}
+
+
+/***/ }),
+/* 2 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
 /* WEBPACK VAR INJECTION */(function(process) {
 
 var utils = __webpack_require__(0);
@@ -476,20 +490,6 @@ utils.forEach(['post', 'put', 'patch'], function forEachMethodWithData(method) {
 module.exports = defaults;
 
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(22)))
-
-/***/ }),
-/* 2 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-if (false) {
-  module.exports = require('./cjs/react.production.min.js');
-} else {
-  module.exports = __webpack_require__(38);
-}
-
 
 /***/ }),
 /* 3 */
@@ -35082,7 +35082,7 @@ module.exports = __webpack_require__(19);
 var utils = __webpack_require__(0);
 var bind = __webpack_require__(8);
 var Axios = __webpack_require__(21);
-var defaults = __webpack_require__(1);
+var defaults = __webpack_require__(2);
 
 /**
  * Create an instance of Axios
@@ -35165,7 +35165,7 @@ function isSlowBuffer (obj) {
 "use strict";
 
 
-var defaults = __webpack_require__(1);
+var defaults = __webpack_require__(2);
 var utils = __webpack_require__(0);
 var InterceptorManager = __webpack_require__(31);
 var dispatchRequest = __webpack_require__(32);
@@ -35894,7 +35894,7 @@ module.exports = InterceptorManager;
 var utils = __webpack_require__(0);
 var transformData = __webpack_require__(33);
 var isCancel = __webpack_require__(11);
-var defaults = __webpack_require__(1);
+var defaults = __webpack_require__(2);
 var isAbsoluteURL = __webpack_require__(34);
 var combineURLs = __webpack_require__(35);
 
@@ -37944,7 +37944,7 @@ if (true) {
   (function() {
 'use strict';
 
-var React = __webpack_require__(2);
+var React = __webpack_require__(1);
 var _assign = __webpack_require__(3);
 var checkPropTypes = __webpack_require__(4);
 var schedule = __webpack_require__(41);
@@ -57081,20 +57081,33 @@ exports.unstable_unsubscribe = unstable_unsubscribe;
 
 /***/ }),
 /* 45 */
-/***/ (function(module, exports, __webpack_require__) {
-
-__webpack_require__(46);
-module.exports = __webpack_require__(52);
-
-
-/***/ }),
-/* 46 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__components_Post__ = __webpack_require__(47);
-__webpack_require__(14);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react__ = __webpack_require__(1);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_react__);
+
+
+var Header = function Header() {
+	return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+		"nav",
+		{ className: "navbar component-header" },
+		__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+			"a",
+			{ className: "navbar-brand", href: "#" },
+			"SCH"
+		)
+	);
+};
+
+/* harmony default export */ __webpack_exports__["a"] = (Header);
+
+/***/ }),
+/* 46 */
+/***/ (function(module, exports, __webpack_require__) {
+
+__webpack_require__(47);
+module.exports = __webpack_require__(53);
 
 
 /***/ }),
@@ -57102,201 +57115,48 @@ __webpack_require__(14);
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react__ = __webpack_require__(2);
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react__ = __webpack_require__(1);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_react__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_react_dom__ = __webpack_require__(39);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_react_dom___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_react_dom__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_react_infinite_scroller__ = __webpack_require__(48);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_react_infinite_scroller___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_react_infinite_scroller__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__Header__ = __webpack_require__(60);
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__components_Posts__ = __webpack_require__(61);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__components_Fab__ = __webpack_require__(62);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__components_Header__ = __webpack_require__(45);
+__webpack_require__(14);
 
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-
+if (localStorage.getItem('token') === null) {
+   console.log(localStorage.getItem('token') === null);
+   console.log(localStorage.getItem('token'));
+   window.location.replace('./');
+}
 
 
 
 
-localStorage.setItem('token', 'eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsImp0aSI6ImIzM2E1MDFkOGIwOTY2Y2QxZGM2MGI5NzU3MWJiZmNlOGNiYWE3NGU3MDY1M2I4MzEwNGI1OGM1ZjRkMGY0NTY2Y2Q4ZGY4YWVjZmEzYTAzIn0.eyJhdWQiOiIyIiwianRpIjoiYjMzYTUwMWQ4YjA5NjZjZDFkYzYwYjk3NTcxYmJmY2U4Y2JhYTc0ZTcwNjUzYjgzMTA0YjU4YzVmNGQwZjQ1NjZjZDhkZjhhZWNmYTNhMDMiLCJpYXQiOjE1Mzg0OTUyMzksIm5iZiI6MTUzODQ5NTIzOSwiZXhwIjoxNTcwMDMxMjM5LCJzdWIiOiIxIiwic2NvcGVzIjpbXX0.OomeSY5_tgb9LyttbPze_VyzAz7yDdxaMaIxUaedqnt3FJovFDZpIYdETzdk75_o_jliTxRNB0DQ8rHIMN5vDbuBVEBxxhSKk-gbogdswpMZ-WPgLUSkcaaBwdGSR_dasnXt4pUe-GAjCjm5uRfbrrxs0AVkzN-I7RD9FmWvUI0L30uvHkchvHmtlwRcbECoVQYDgeLpQLuLbq0Z0tcLnrkXEXysfmtfESTceYGVNqou5Mb4djRU971_NFVMxkINXMSyAIIYDk1CoKFqXrbdiLQpWF4uMmhjPICD66MvXi1cQ1FdUdGGDvBmF26WIQbCT57VikTnNMa9Vv-eaWUBVg_r5b0JENZeqKKfrR2u-7aYV5BAceFvYVchxYVuzGnT3NzPd5gzIRxcv2pfev2aGvwomFHHNAijZrNZ1p0ImtDuEtQhRYJ_rflyCAXb5mp9GF38yD7pVRdyGq7R5iENYYijCK6_wGBqlULFTVFquPJfnHs3lClu1PD73M5VXqQw7eaGiBbhMFhxA8s6oARmN56M8W5TTeJkLJYoE-0kma3JOKnWIjIs0HhJSbiq-IV01F8giu0c-5Vawvjw1vZSvUnxJ2pfXeqKHDy6vv2PX_RsOsi99o0mn-17Au0zXzRhM0IjrFG4y1qU31ktAeCteBs_d8XllcYVZ0Zk0UMwWIQ');
 
-var Post = function (_Component) {
-    _inherits(Post, _Component);
 
-    function Post() {
-        _classCallCheck(this, Post);
-
-        var _this = _possibleConstructorReturn(this, (Post.__proto__ || Object.getPrototypeOf(Post)).call(this));
-
-        _this.state = {
-            posts: [],
-            hasMoreItems: true,
-            nextHref: null
-        };
-
-        _this.handleScroll = _this.loadMore.bind(_this);
-        return _this;
-    }
-
-    _createClass(Post, [{
-        key: "loadMore",
-        value: function loadMore() {
-            var _this2 = this;
-
-            var target = url + "/api/post";
-
-            if (this.state.nextHref) {
-                target = this.state.nextHref;
-            }
-
-            fetch(target, {
-                headers: {
-                    'Authorization': 'Bearer ' + localStorage.getItem('token')
-                }
-            }).then(function (response) {
-                return response.json();
-            }).then(function (result) {
-                var posts = _this2.state.posts.concat(result["data"]);
-
-                _this2.setState({
-                    posts: posts
-                });
-
-                if (result["next_page_url"] && _this2.state.nextHref != result["next_page_url"]) {
-                    _this2.setState({
-                        nextHref: result["next_page_url"]
-                    });
-                }
-
-                if (result["current_page"] + 1 == result["last_page"]) {
-                    _this2.setState({
-                        hasMoreItems: false
-                    });
-                }
-            });
-        }
-    }, {
-        key: "handleClick",
-        value: function handleClick(post) {
-            this.setState({ currentPost: post });
-        }
-    }, {
-        key: "render",
-        value: function render() {
-            var _this3 = this;
-
-            var loader = __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                "li",
-                { className: "loader", key: 0 },
-                "Loading"
-            );
-
-            var items = [];
-
-            this.state.posts.map(function (post) {
-                var style = {
-                    backgroundImage: "url(" + post.user.img_src + ")"
-                };
-
-                items.push(__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                    "li",
-                    { onClick: function onClick() {
-                            return _this3.handleClick(post);
-                        }, key: post.id },
-                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                        "div",
-                        { className: "header" },
-                        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("div", { className: "img", style: style }),
-                        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                            "a",
-                            null,
-                            post.user.name
-                        )
-                    ),
-                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                        "div",
-                        { className: "body" },
-                        post.body
-                    ),
-                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                        "div",
-                        { className: "footer" },
-                        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                            "div",
-                            { className: "row no-gutters" },
-                            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                                "div",
-                                { className: "col" },
-                                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                                    "a",
-                                    null,
-                                    "Comment"
-                                )
-                            ),
-                            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                                "div",
-                                { className: "col" },
-                                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                                    "a",
-                                    null,
-                                    "Like"
-                                )
-                            ),
-                            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                                "div",
-                                { className: "col" },
-                                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                                    "a",
-                                    null,
-                                    "Share"
-                                )
-                            )
-                        )
-                    )
-                ));
-            });
-
-            return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                "div",
-                { className: "component-post" },
-                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_3__Header__["a" /* default */], null),
-                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                    __WEBPACK_IMPORTED_MODULE_2_react_infinite_scroller___default.a,
-                    {
-                        element: "ul",
-                        className: "posts",
-                        pageStart: 0,
-                        loadMore: this.handleScroll,
-                        hasMore: this.state.hasMoreItems,
-                        loader: loader },
-                    items
-                )
-            );
-        }
-    }]);
-
-    return Post;
-}(__WEBPACK_IMPORTED_MODULE_0_react__["Component"]);
-
-/* unused harmony default export */ var _unused_webpack_default_export = (Post);
 
 if (document.getElementById("root")) {
-    __WEBPACK_IMPORTED_MODULE_1_react_dom___default.a.render(__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(Post, null), document.getElementById("root"));
+   __WEBPACK_IMPORTED_MODULE_1_react_dom___default.a.render(__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+      'div',
+      null,
+      __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_4__components_Header__["a" /* default */], null),
+      __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_3__components_Fab__["a" /* default */], null),
+      __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_2__components_Posts__["a" /* default */], null)
+   ), document.getElementById("root"));
 }
 
 /***/ }),
-/* 48 */
+/* 48 */,
+/* 49 */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(49)
+module.exports = __webpack_require__(50)
 
 
 /***/ }),
-/* 49 */
+/* 50 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -57308,11 +57168,11 @@ Object.defineProperty(exports, "__esModule", {
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-var _react = __webpack_require__(2);
+var _react = __webpack_require__(1);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _propTypes = __webpack_require__(50);
+var _propTypes = __webpack_require__(51);
 
 var _propTypes2 = _interopRequireDefault(_propTypes);
 
@@ -57545,7 +57405,7 @@ module.exports = exports['default'];
 
 
 /***/ }),
-/* 50 */
+/* 51 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /**
@@ -57570,7 +57430,7 @@ if (true) {
   // By explicitly using `prop-types` you are opting into new development behavior.
   // http://fb.me/prop-types-in-prod
   var throwOnDirectAccess = true;
-  module.exports = __webpack_require__(51)(isValidElement, throwOnDirectAccess);
+  module.exports = __webpack_require__(52)(isValidElement, throwOnDirectAccess);
 } else {
   // By explicitly using `prop-types` you are opting into new production behavior.
   // http://fb.me/prop-types-in-prod
@@ -57579,7 +57439,7 @@ if (true) {
 
 
 /***/ }),
-/* 51 */
+/* 52 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -58141,40 +58001,312 @@ module.exports = function(isValidElement, throwOnDirectAccess) {
 
 
 /***/ }),
-/* 52 */
+/* 53 */
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin
 
 /***/ }),
-/* 53 */,
 /* 54 */,
 /* 55 */,
 /* 56 */,
 /* 57 */,
 /* 58 */,
 /* 59 */,
-/* 60 */
+/* 60 */,
+/* 61 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react__ = __webpack_require__(2);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react__ = __webpack_require__(1);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_react__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_react_dom__ = __webpack_require__(39);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_react_dom___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_react_dom__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_react_infinite_scroller__ = __webpack_require__(49);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_react_infinite_scroller___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_react_infinite_scroller__);
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
 
-var Header = function Header() {
-  return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-    "nav",
-    { className: "navbar sticky-top component-header" },
-    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-      "a",
-      { className: "navbar-brand", href: "#" },
-      "SCH"
-    )
-  );
-};
 
-/* harmony default export */ __webpack_exports__["a"] = (Header);
+
+
+var Posts = function (_Component) {
+    _inherits(Posts, _Component);
+
+    function Posts() {
+        _classCallCheck(this, Posts);
+
+        var _this = _possibleConstructorReturn(this, (Posts.__proto__ || Object.getPrototypeOf(Posts)).call(this));
+
+        _this.state = {
+            posts: [],
+            hasMoreItems: true,
+            nextHref: null
+        };
+
+        _this.handleScroll = _this.loadMore.bind(_this);
+        return _this;
+    }
+
+    _createClass(Posts, [{
+        key: "loadMore",
+        value: function loadMore() {
+            var _this2 = this;
+
+            var target = url + "/api/post";
+
+            if (this.state.nextHref) {
+                target = this.state.nextHref;
+            }
+
+            fetch(target, {
+                headers: {
+                    'Authorization': 'Bearer ' + localStorage.getItem('token')
+                }
+            }).then(function (response) {
+                return response.json();
+            }).then(function (result) {
+                var posts = _this2.state.posts.concat(result["data"]);
+
+                _this2.setState({
+                    posts: posts
+                });
+
+                if (result["next_page_url"] && _this2.state.nextHref != result["next_page_url"]) {
+                    _this2.setState({
+                        nextHref: result["next_page_url"]
+                    });
+                }
+
+                if (result["current_page"] + 1 == result["last_page"]) {
+                    _this2.setState({
+                        hasMoreItems: false
+                    });
+                }
+            });
+        }
+    }, {
+        key: "handleClick",
+        value: function handleClick(post) {
+            this.setState({ currentPost: post });
+        }
+    }, {
+        key: "render",
+        value: function render() {
+            var _this3 = this;
+
+            var loader = __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                "li",
+                { className: "loader", key: 0 },
+                "Loading"
+            );
+
+            var items = [];
+
+            this.state.posts.map(function (post) {
+                var style = {
+                    backgroundImage: "url(" + post.user.img_src + ")"
+                };
+
+                items.push(__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                    "li",
+                    { onClick: function onClick() {
+                            return _this3.handleClick(post);
+                        }, key: post.id },
+                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                        "div",
+                        { className: "header" },
+                        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("div", { className: "img", style: style }),
+                        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                            "a",
+                            null,
+                            post.user.name
+                        )
+                    ),
+                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                        "div",
+                        { className: "body" },
+                        post.body
+                    ),
+                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                        "div",
+                        { className: "footer" },
+                        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                            "div",
+                            { className: "row no-gutters" },
+                            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                "div",
+                                { className: "col" },
+                                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                    "a",
+                                    null,
+                                    "Comment"
+                                )
+                            ),
+                            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                "div",
+                                { className: "col" },
+                                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                    "a",
+                                    null,
+                                    "Like"
+                                )
+                            ),
+                            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                "div",
+                                { className: "col" },
+                                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                    "a",
+                                    null,
+                                    "Share"
+                                )
+                            )
+                        )
+                    )
+                ));
+            });
+
+            return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                __WEBPACK_IMPORTED_MODULE_2_react_infinite_scroller___default.a,
+                {
+                    element: "ul",
+                    className: "component-posts",
+                    pageStart: 0,
+                    loadMore: this.handleScroll,
+                    hasMore: this.state.hasMoreItems,
+                    loader: loader },
+                items
+            );
+        }
+    }]);
+
+    return Posts;
+}(__WEBPACK_IMPORTED_MODULE_0_react__["Component"]);
+
+/* harmony default export */ __webpack_exports__["a"] = (Posts);
+
+/***/ }),
+/* 62 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react__ = __webpack_require__(1);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_react__);
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+
+
+var Fab = function (_Component) {
+	_inherits(Fab, _Component);
+
+	function Fab() {
+		_classCallCheck(this, Fab);
+
+		var _this = _possibleConstructorReturn(this, (Fab.__proto__ || Object.getPrototypeOf(Fab)).call(this));
+
+		_this.state = {
+			active: false,
+			show: true
+		};
+
+		_this.click = _this.handleClick.bind(_this);
+		_this.hideBar = _this.hideBar.bind(_this);
+
+		_this.y = 0;
+		_this.timer = null;
+		return _this;
+	}
+
+	_createClass(Fab, [{
+		key: 'handleClick',
+		value: function handleClick() {
+			this.setState({ active: !this.state.active });
+		}
+	}, {
+		key: 'hideBar',
+		value: function hideBar() {
+			self = this;
+
+			this.setState({ show: false });
+
+			if (this.timer !== null) {
+				clearTimeout(this.timer);
+			}
+
+			this.timer = setTimeout(function () {
+				self.setState({ show: true });
+			}, 500);
+		}
+	}, {
+		key: 'componentDidMount',
+		value: function componentDidMount() {
+			//window.addEventListener('scroll', this.hideBar);
+		}
+	}, {
+		key: 'componentWillUnmount',
+		value: function componentWillUnmount() {
+			//window.removeEventListener('scroll', this.hideBar);
+		}
+	}, {
+		key: 'render',
+		value: function render() {
+			var _this2 = this;
+
+			var isActive = this.state.active ? 'active' : '';
+			var classHide = this.state.show ? '' : 'hide';
+
+			return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+				'div',
+				{ className: isActive + " fab " + classHide, onClick: function onClick() {
+						return _this2.handleClick();
+					} },
+				__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+					'span',
+					{ className: isActive + " fab-action-button" },
+					__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('i', { className: 'fab-action-button__icon' })
+				),
+				__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+					'ul',
+					{ className: 'fab-buttons' },
+					__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+						'li',
+						{ className: 'fab-buttons__item' },
+						__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+							'a',
+							{ href: '#', className: 'fab-buttons__link', 'data-tooltip': 'Facebook' },
+							__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('i', { className: 'icon-material icon-material_fb' })
+						)
+					),
+					__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+						'li',
+						{ className: 'fab-buttons__item' },
+						__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+							'a',
+							{ href: '#', className: 'fab-buttons__link', 'data-tooltip': 'Twitter' },
+							__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('i', { className: 'icon-material icon-material_tw' })
+						)
+					)
+				)
+			);
+		}
+	}]);
+
+	return Fab;
+}(__WEBPACK_IMPORTED_MODULE_0_react__["Component"]);
+
+/* harmony default export */ __webpack_exports__["a"] = (Fab);
 
 /***/ })
 /******/ ]);
