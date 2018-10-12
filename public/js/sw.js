@@ -60,29 +60,37 @@
 /******/ 	__webpack_require__.p = "/";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 45);
+/******/ 	return __webpack_require__(__webpack_require__.s = 91);
 /******/ })
 /************************************************************************/
 /******/ ({
 
-/***/ 45:
+/***/ 91:
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(46);
-module.exports = __webpack_require__(52);
+__webpack_require__(92);
+module.exports = __webpack_require__(93);
 
 
 /***/ }),
 
-/***/ 46:
-/***/ (function(module, __webpack_exports__) {
+/***/ 92:
+/***/ (function(module, exports) {
 
-"use strict";
-throw new Error("Module build failed: Error: ENOENT: no such file or directory, open '/Applications/XAMPP/xamppfiles/htdocs/sch/resources/js/app.js'");
+// Make sure sw are supported
+if ('serviceWorker' in navigator) {
+  window.addEventListener('load', function () {
+    navigator.serviceWorker.register('./sw_site.js').then(function (reg) {
+      return console.log('Service Worker: Registered (Pages)');
+    }).catch(function (err) {
+      return console.log('Service Worker: Error: ' + err);
+    });
+  });
+}
 
 /***/ }),
 
-/***/ 52:
+/***/ 93:
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin

@@ -66,7 +66,7 @@ class Posts extends Component {
             };
 
             items.push(
-                <li onClick={() => this.handleClick(post)} key={post.id}>
+                <li className="paper" onClick={() => this.handleClick(post)} key={post.id}>
                     <div className="header">
                         <div className="img" style={style}></div>
                         <a>{post.user.name}</a>

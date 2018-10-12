@@ -5,12 +5,10 @@ class Login extends Component {
         super();
 
         this.state = {
-            auth: [],
-            hasMoreItems: true,
-            nextHref: null
+            auth: []
         };
 
-        this.handleScroll = this.handleInput.bind(this);
+        this.handleInput = this.handleInput.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
     }
 
@@ -39,7 +37,7 @@ class Login extends Component {
             .then(result => {
                 if(result.data) if(result.data.token) {
                     localStorage.setItem('token', result.data.token);
-                    window.location.replace('./post');
+                    window.location.replace('./');
                 }
             });
     }

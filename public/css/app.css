@@ -10513,31 +10513,62 @@ a:focus {
   padding-left: 0px;
 }
 
-.component-posts {
+.paper {
+  background: #fff;
+  margin-bottom: 0.8rem;
+  -webkit-transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+@media (min-width: 576px) {
+  .paper {
+    -webkit-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+    border-radius: 3px;
+    margin-bottom: 1.6rem;
+  }
+}
+
+.component-posts,
+.component-compose {
   max-width: 576px;
   margin-left: auto;
   margin-right: auto;
   margin-top: 0.8rem;
 }
 
+@media (min-width: 576px) {
+  .component-posts,
+  .component-compose {
+    margin-top: 1.6rem;
+  }
+}
+
+.component-compose .paper {
+  padding: 1.6rem;
+}
+
+.component-compose textarea {
+  height: 20rem;
+  resize: none;
+  padding: 0.8rem;
+  font-size: 1.6rem;
+}
+
 .component-posts li {
   list-style: none;
   background: #fff;
   margin-bottom: 0.8rem;
+  -webkit-transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
 }
 
 @media (min-width: 576px) {
-  .component-posts {
-    margin-top: 1.6rem;
-  }
-
   .component-posts li {
     -webkit-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
             box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
     border-radius: 3px;
     margin-bottom: 1.6rem;
-    -webkit-transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
-    transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
   }
 
   .component-posts li:hover {
@@ -10624,13 +10655,42 @@ a:focus {
 
 .fab {
   position: fixed;
-  width: 5rem;
-  right: 1.5rem;
-  bottom: 1.5rem;
   z-index: 1020;
   opacity: 1;
   -webkit-transition: 0.5s;
   transition: 0.5s;
+  bottom: 1.5rem;
+  right: 1.5rem;
+}
+
+@media (min-width: 768px) {
+  .fab {
+    right: calc(50% - 384px + 1.5rem);
+  }
+}
+
+.fab.submit {
+  position: absolute;
+  right: calc(50% - 7.5rem);
+}
+
+.fab.submit a {
+  width: 15rem;
+  background-color: #1abc9c;
+}
+
+.fab.submit a:hover {
+  -webkit-box-shadow: 0 7px 14px rgba(0, 0, 0, 0.25), 0 5px 5px rgba(0, 0, 0, 0.22);
+          box-shadow: 0 7px 14px rgba(0, 0, 0, 0.25), 0 5px 5px rgba(0, 0, 0, 0.22);
+  -webkit-transform: scale(1.01, 1.01) translateY(-0.2rem);
+          transform: scale(1.01, 1.01) translateY(-0.2rem);
+}
+
+.fab.submit a:after {
+  padding-left: 1rem;
+  display: inline-block;
+  content: "  submit";
+  opacity: 1;
 }
 
 .fab.active .fab-buttons {
@@ -10643,69 +10703,28 @@ a:focus {
           transform: scaleY(1) scaleX(1) translateY(-16px) translateX(0px);
 }
 
-.fab-action-button {
-  position: absolute;
-  bottom: 0;
-  display: block;
-  width: 56px;
-  height: 56px;
+.fab a {
+  -webkit-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+          box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+  white-space: nowrap;
+  -webkit-transition: 0.75s;
+  transition: 0.75s;
   background-color: #29B6F6;
-  border-radius: 50%;
-  -webkit-box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 1px 5px 0 rgba(0, 0, 0, 0.12), 0 3px 1px -2px rgba(0, 0, 0, 0.2);
-          box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 1px 5px 0 rgba(0, 0, 0, 0.12), 0 3px 1px -2px rgba(0, 0, 0, 0.2);
-}
-
-.fab-action-button.active + .fab-action-button-buttons .fab-action-button-buttons__link:before {
-  visibility: visible;
-  opacity: 1;
-  -webkit-transform: scale(1);
-          transform: scale(1);
-  -webkit-transform-origin: right center 0;
-          transform-origin: right center 0;
-  -webkit-transition-delay: 0.3s;
-          transition-delay: 0.3s;
-}
-
-.fab-action-button__icon {
-  display: inline-block;
-  width: 56px;
-  height: 56px;
-  background: url("data:image/svg+xml;base64,PHN2ZyBmaWxsPSIjZmZmZmZmIiBoZWlnaHQ9IjI0IiB2aWV3Qm94PSIwIDAgMjQgMjQiIHdpZHRoPSIyNCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KICAgIDxwYXRoIGQ9Ik0wIDBoMjR2MjRIMHoiIGZpbGw9Im5vbmUiLz4KICAgIDxwYXRoIGQ9Ik0xOCAxNi4wOGMtLjc2IDAtMS40NC4zLTEuOTYuNzdMOC45MSAxMi43Yy4wNS0uMjMuMDktLjQ2LjA5LS43cy0uMDQtLjQ3LS4wOS0uN2w3LjA1LTQuMTFjLjU0LjUgMS4yNS44MSAyLjA0LjgxIDEuNjYgMCAzLTEuMzQgMy0zcy0xLjM0LTMtMy0zLTMgMS4zNC0zIDNjMCAuMjQuMDQuNDcuMDkuN0w4LjA0IDkuODFDNy41IDkuMzEgNi43OSA5IDYgOWMtMS42NiAwLTMgMS4zNC0zIDNzMS4zNCAzIDMgM2MuNzkgMCAxLjUtLjMxIDIuMDQtLjgxbDcuMTIgNC4xNmMtLjA1LjIxLS4wOC40My0uMDguNjUgMCAxLjYxIDEuMzEgMi45MiAyLjkyIDIuOTIgMS42MSAwIDIuOTItMS4zMSAyLjkyLTIuOTJzLTEuMzEtMi45Mi0yLjkyLTIuOTJ6Ii8+Cjwvc3ZnPg==") center no-repeat;
-}
-
-.fab-buttons {
-  position: absolute;
-  left: 0;
-  right: 0;
-  bottom: 50px;
-  list-style: none;
-  margin: 0;
-  padding: 0;
-  opacity: 0;
-  visibility: hidden;
-  -webkit-transition: 0.2s;
-  transition: 0.2s;
-}
-
-.fab-buttons__item {
+  border-radius: 50px;
   display: block;
+  width: 5rem;
+  height: 5rem;
+  color: #fff;
   text-align: center;
-  margin: 12px 0;
+  font-size: 2rem;
+  padding-top: 1rem;
 }
 
-.fab-buttons__link {
-  display: inline-block;
-  width: 40px;
-  height: 40px;
-  text-decoration: none;
-  background-color: #ffffff;
-  border-radius: 50%;
-  -webkit-box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 1px 5px 0 rgba(0, 0, 0, 0.12), 0 3px 1px -2px rgba(0, 0, 0, 0.2);
-          box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 1px 5px 0 rgba(0, 0, 0, 0.12), 0 3px 1px -2px rgba(0, 0, 0, 0.2);
-  -webkit-transform: scaleY(0.5) scaleX(0.5) translateY(0px) translateX(0px);
-          transform: scaleY(0.5) scaleX(0.5) translateY(0px) translateX(0px);
-  -webkit-transition: .3s;
-  transition: .3s;
+.fab a:after {
+  -webkit-transition: 1s;
+  transition: 1s;
+  content: "";
+  opacity: 0;
 }
 
 [data-tooltip]:before {
@@ -10781,5 +10800,31 @@ a:focus {
   width: 25%;
   text-align: center;
   padding: 0;
+}
+
+.form-group input {
+  padding: 1.6rem;
+  font-size: 1.6rem;
+  border-radius: 3px;
+}
+
+.form-group textarea {
+  padding: 1.6rem;
+  font-size: 1.6rem;
+  border-radius: 3px;
+  resize: none;
+  height: 20rem;
+}
+
+.component-login {
+  background: white;
+  padding: 1.6rem;
+  font-size: 2rem;
+}
+
+button.btn {
+  padding: 0.8rem 1.6rem;
+  font-size: 1.6rem;
+  border-radius: 3px;
 }
 

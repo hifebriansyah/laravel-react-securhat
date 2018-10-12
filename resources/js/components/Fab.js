@@ -1,71 +1,52 @@
-import React, { Component } from "react";
+import React, { Component } from "react"
+import { Link } from "react-router-dom"
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 class Fab extends Component {
-    constructor() {
-        super();
-
+    constructor(props) {
+        super(props)
+        
         this.state = {
-            active: false,
-            show: true
-        };
-
-        this.click = this.handleClick.bind(this);
-        this.hideBar = this.hideBar.bind(this);
-
-        this.y = 0;
-        this.timer = null;
+            path: null,
+            icon: "pen"
+        }
     }
 
-    handleClick() {
-		this.setState({active: !this.state.active});
-    }
+	componentDidMount() {
+		this.onRouteChanged(this.props.location.pathname)
+	}
 
-    hideBar() {
-    	self = this;
-
-		this.setState({show: false});
-
-		if(this.timer !== null) {
-			clearTimeout(this.timer);     
+	componentDidUpdate(prevProps) {
+		if (this.props.location.pathname !== prevProps.location.pathname) {
+			this.onRouteChanged(this.props.location.pathname)
 		}
-		
-		this.timer = setTimeout(function() {
-			self.setState({show: true})  
-		}, 500);
-    }
+	}
 
-    componentDidMount(){
-        //window.addEventListener('scroll', this.hideBar);
-    }
+	onRouteChanged(pathname) {
+		var path = "hide";
+		var icon = "pen";
 
-    componentWillUnmount(){
-         //window.removeEventListener('scroll', this.hideBar);
-    }
+		if (pathname == "/") {
+			path = "new";
+		} else if (pathname == "/compose") {
+			path = "submit top";
+			icon = "check";
+		}
 
-	render() {
-        const isActive = this.state.active ? 'active' : '';
-        const classHide = this.state.show ? '' : 'hide';
+		console.log(icon);
 
-		return(
-			<div className={isActive + " fab " +classHide} onClick={() => this.handleClick()} >
-				<span className={isActive + " fab-action-button"}>
-					<i className="fab-action-button__icon"></i>
-				</span>
-				<ul className="fab-buttons">
-					<li className="fab-buttons__item">
-						<a href="#" className="fab-buttons__link" data-tooltip="Facebook">
-							<i className="icon-material icon-material_fb"></i>
-						</a>
-					</li>
-					<li className="fab-buttons__item">
-						<a href="#" className="fab-buttons__link" data-tooltip="Twitter">
-							<i className="icon-material icon-material_tw"></i>
-						</a>
-					</li>
-				</ul>
+		this.setState({path, icon})
+	}
+
+    render() {
+		return (
+			<div className={"fab " + this.state.path }>
+				<Link className="fab-action-button" to="/compose">
+					<FontAwesomeIcon icon={this.state.icon} />
+				</Link>
 			</div>
 		)
 	}
 }
 
-export default Fab ;
+export default Fab
