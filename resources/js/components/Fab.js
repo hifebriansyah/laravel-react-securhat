@@ -1,17 +1,9 @@
 import React, { Component } from "react"
 import { Link } from "react-router-dom"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import {connect} from "react-redux";
 
 class Fab extends Component {
-    constructor(props) {
-        super(props)
-        
-        this.state = {
-            path: null,
-            icon: "pen"
-        }
-    }
-
 	componentDidMount() {
 		this.onRouteChanged(this.props.location.pathname)
 	}
@@ -25,28 +17,51 @@ class Fab extends Component {
 	onRouteChanged(pathname) {
 		var path = "hide";
 		var icon = "pen";
+		var to = "/"
 
 		if (pathname == "/") {
 			path = "new";
+			to = "/compose";
 		} else if (pathname == "/compose") {
-			path = "submit top";
+			path = "submit";
 			icon = "check";
+			to = "/compose#save";
 		}
 
-		console.log(icon);
+		this.props.setFab({path, icon, to})
+	}
 
-		this.setState({path, icon})
+	handleClick() {
+		console.log(this.props.post);
 	}
 
     render() {
 		return (
-			<div className={"fab " + this.state.path }>
-				<Link className="fab-action-button" to="/compose">
-					<FontAwesomeIcon icon={this.state.icon} />
+			<div className={"fab " + this.props.fab.path }>
+				<Link className="fab-action-button" to={this.props.fab.to} onClick={()=>this.handleClick()}>
+					<FontAwesomeIcon icon={this.props.fab.icon} />
 				</Link>
 			</div>
 		)
 	}
 }
 
-export default Fab
+const mapStateToProps = (state) => {
+  return {
+      fab: state.fab,
+      post: state.post
+  };
+};
+
+const mapDispatchToProps = (dispatch) => {
+    return {
+        setFab: (fab) => {
+            dispatch({
+                type: "SET_FAB",
+                payload: fab
+            });
+        }
+    };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(Fab);

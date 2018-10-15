@@ -9,7 +9,7 @@ const Navbar = () => {
 				<Link className="nav-link" to="/"><FontAwesomeIcon icon="home" /></Link>
 				<Link className="nav-link" to="/messages"><FontAwesomeIcon icon="envelope" /></Link>
 				<Link className="nav-link" to="/notifications"><FontAwesomeIcon icon="bell" /></Link>
-				<a className="nav-link" href="/user"><FontAwesomeIcon icon="user" /></a>
+				<Link className="nav-link" to="/user"><FontAwesomeIcon icon="user" /></Link>
 			</div>
 		</nav>
 	)

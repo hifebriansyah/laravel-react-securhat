@@ -1,25 +1,19 @@
 import React, { Component } from "react";
 import ReactDOM from "react-dom";
 import InfiniteScroll from 'react-infinite-scroller';
+import {connect} from "react-redux";
 
 class Posts extends Component {
     constructor() {
         super();
-        
-        this.state = {
-            posts: [],
-            hasMoreItems: true,
-            nextHref: null
-        };
-
         this.handleScroll = this.loadMore.bind(this);
     }
 
     loadMore() {
         var target = url+"/api/post";
 
-        if(this.state.nextHref) {
-            target = this.state.nextHref;
+        if(this.props.posts.nextHref) {
+            target = this.props.posts.nextHref;
         }
 
         fetch(target, {
@@ -31,22 +25,14 @@ class Posts extends Component {
                 return response.json();
             })
             .then(result => {
-                var posts = this.state.posts.concat(result["data"]);
+                this.props.concatPosts(result["data"]);
 
-                this.setState({
-                    posts : posts
-                });
-
-                if(result["next_page_url"] && this.state.nextHref != result["next_page_url"]){
-                    this.setState({
-                        nextHref : result["next_page_url"]
-                    });
+                if(result["next_page_url"] && this.props.posts.nextHref != result["next_page_url"]){
+                    this.props.setPostsHref(result["next_page_url"]);
                 }
 
                 if(result["current_page"]+1 == result["last_page"]) {
-                    this.setState({
-                        hasMoreItems : false
-                    });
+                    this.props.isMorePosts(false);
                 }
             });
     }
@@ -60,7 +46,7 @@ class Posts extends Component {
 
         var items = [];
 
-        this.state.posts.map(post => {
+        this.props.posts.data.map(post => {
             var style = {
               backgroundImage: `url(${post.user.img_src})`
             };
@@ -95,7 +81,7 @@ class Posts extends Component {
                 className="component-posts"
                 pageStart={0}
                 loadMore={this.handleScroll}
-                hasMore={this.state.hasMoreItems}
+                hasMore={this.props.posts.hasMoreItems}
                 loader={loader}>
 
                 {items}
@@ -104,4 +90,34 @@ class Posts extends Component {
     }
 }
 
-export default Posts;
+
+const mapStateToProps = (state) => {
+  return {
+      posts: state.posts
+  };
+};
+
+const mapDispatchToProps = (dispatch) => {
+    return {
+        concatPosts: (fab) => {
+            dispatch({
+                type: "CONCAT_POSTS",
+                payload: fab
+            });
+        },
+        isMorePosts: (fab) => {
+            dispatch({
+                type: "IS_MORE_POSTS",
+                payload: fab
+            });
+        },
+        setPostsHref: (fab) => {
+            dispatch({
+                type: "SET_POSTS_HREF",
+                payload: fab
+            });
+        }
+    };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(Posts);

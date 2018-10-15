@@ -207,7 +207,6 @@ a:focus {
 	}
 
     &.submit {
-    	position: absolute;
     	right: calc(50% - 7.5rem);
 
 		a {
@@ -215,6 +214,10 @@ a:focus {
 	        background-color: #1abc9c;
 
 	        &:hover {
+				@include shadow-float;
+			}
+
+			@include media-breakpoint-up(sm) {
 				@include shadow-float;
 			}
 
