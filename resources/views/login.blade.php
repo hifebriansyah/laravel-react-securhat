@@ -5,7 +5,7 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0">
         <title>SCH</title>
-        <link href="{{url('/').mix('css/app.css')}}" rel="stylesheet" type="text/css">
+        <link href="{{url('/').mix('gen/css/app.css')}}" rel="stylesheet" type="text/css">
         <meta name="csrf-token" content="{{ csrf_token() }}">
         <link rel="manifest" href="/manifest.json" />
 
@@ -27,8 +27,8 @@
     <body>
         <div id="root" class="container-fluid"></div>
         <script>url = "{{url('/')}}";</script>
-        <script src="{{url('/').mix('js/apps/login.js')}}" ></script>
-        <script src="{{url('/js/sw.js')}}" ></script>
+        <script src="{{url('/').mix('gen/js/apps/login.js')}}" ></script>
+        <script src="{{url('gen/js/sw.js')}}" ></script>
         <noscript>
             <div style="border: 1px solid purple; padding: 10px">
                 <span style="color:red">JavaScript is not enabled!</span>

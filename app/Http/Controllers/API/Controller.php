@@ -21,14 +21,24 @@ class Controller extends \App\Http\Controllers\Controller
     public function respond($collections)
     {
         // somehow can't use is_bool on ternary
+
+        $status = 200;
+
         if (!is_object($collections)) {
             $collections = ['data' => $collections];
         } else {
-            $collections = (get_class($collections) == 'Illuminate\Pagination\LengthAwarePaginator')
-                ? $collections->toArray()
-                : ['data' => $collections->toArray()];
+            $data = $collections->toArray();
+
+            if (get_class($collections) == 'Illuminate\Pagination\LengthAwarePaginator') {
+                $collections = $data;
+            } elseif (get_class($collections) == 'Illuminate\Support\MessageBag') {
+                $collections = ['errors' => $data];
+                $status = 422;
+            } else {
+                $collections = ['data' => $data];
+            }
         }
 
-        return response()->json($this->noNull($collections));
+        return response()->json($this->noNull($collections), $status);
     }
 }

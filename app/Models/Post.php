@@ -40,7 +40,7 @@ class Post extends Model
         $validation = validator()->make(request()->all(), self::$rules);
 
         if ($validation->fails()) {
-            return $errors = $validation->errors();
+            return $validation->errors();
         }
 
         $input = request()->input();

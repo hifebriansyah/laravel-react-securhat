@@ -7,6 +7,8 @@ const fabReducer = (state = {
         case "SET_FAB":
             state = action.payload;
             break;
+        case "FAB_CLICK":
+        	break
     }
     return state;
 };

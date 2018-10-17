@@ -17,16 +17,14 @@ class CheckToken
 
     public function handle($request, Closure $next)
     {
-        //$request->headers->set('authorization', 'ok');
-
         $isDebug = ($request->header('authorization') == 'debug' /*&& debugEnv*/);
 
         if ($this->auth->guard('api')->check() || $isDebug) {
+            $this->auth->shouldUse('api');
+            
             return $next($request);
         }
 
-        return response()->json([
-            'message' => 'invalid user'
-        ]);
+        return response()->json(['message' => 'invalid user'], 401);
     }
 }

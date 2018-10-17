@@ -1,7 +1,7 @@
 {
-    "/js/apps/main.js": "/js/apps/main.js",
-    "/js/apps/login.js": "/js/apps/login.js",
-    "/js/sw.js": "/js/sw.js",
-    "/css/app.css": "/css/app.css",
+    "/gen/js/apps/main.js": "/gen/js/apps/main.js",
+    "/gen/js/apps/login.js": "/gen/js/apps/login.js",
+    "/gen/js/sw.js": "/gen/js/sw.js",
+    "/gen/css/app.css": "/gen/css/app.css",
     "/sw_site.js": "/sw_site.js"
 }

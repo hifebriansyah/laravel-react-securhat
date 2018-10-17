@@ -1,8 +1,11 @@
-const postsReducer = (state = {
+const defPostsState = {
     data: [],
     hasMoreItems: true,
-    nextHref: null
-}, action) => {
+    nextHref: null,
+    class: ''
+}
+
+const postsReducer = (state = {...defPostsState}, action) => {
     switch (action.type) {
         case "CONCAT_POSTS":
             state = {
@@ -22,6 +25,16 @@ const postsReducer = (state = {
                 nextHref: action.payload
             };
             break;
+        case "SET_POSTS_CLASS":
+            state = {
+                ...state,
+                class: action.payload
+            };
+            break;
+        case "CLEAR_POSTS":
+            state = {...defPostsState};
+            break;
+
     }
     return state;
 };

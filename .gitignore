@@ -1,6 +1,12 @@
 /node_modules
 /public/hot
+/public/gen
 /public/storage
+/public/uploads/*
+!/public/uploads/dummy
+!/public/uploads/user/1.jpg
+!/public/uploads/user/2.jpg
+!/public/uploads/user/3.jpg
 /storage/*.key
 /vendor
 /.idea
