@@ -11,6 +11,7 @@ import User from '../components/User';
 import Fab from '../components/Fab';
 import Navbar from '../components/Navbar';
 import Listener from '../components/Listener';
+import UnderDevelopment from '../components/UnderDevelopment';
 
 class Main extends React.Component {
 	shouldComponentUpdate() {
@@ -51,6 +52,11 @@ class Main extends React.Component {
 	    }
 	}
 
+	signOut() {
+		localStorage.removeItem('token');
+		this.checkAuth();
+	}
+
 	render() {
 		return(
 			<Router>
@@ -59,29 +65,32 @@ class Main extends React.Component {
 						setFab={(e) => this.props.setFab(e)}
 						setPostsClass={(e) => this.props.setPostsClass(e)} />} />
 
-					<Navbar />
+					<Navbar
+						signOut={(e) => this.signOut(e)} />
 
 					<Fab
 						fab={this.props.fab}
 						fabClick={(e) => this.fabClick(e)} />
 
-					<Posts
-						concatPosts={(e) => this.props.concatPosts(e)}
-						isMorePosts={(e) => this.props.isMorePosts(e)}
-						setPostsHref={(e) => this.props.setPostsHref(e)}
-						clearPosts={(e) => this.props.clearPosts(e)}
-						setAuthToken={(e) => this.props.setAuthToken(e)}
-						posts={this.props.posts} />
-
 					<Switch>
+						<Route exact
+							path="/"
+							render={() => <Posts
+							concatPosts={(e) => this.props.concatPosts(e)}
+							isMorePosts={(e) => this.props.isMorePosts(e)}
+							setPostsHref={(e) => this.props.setPostsHref(e)}
+							clearPosts={(e) => this.props.clearPosts(e)}
+							setAuthToken={(e) => this.props.setAuthToken(e)}
+							posts={this.props.posts} />}/>
+
 						<Route exact
 							path="/compose"
 							render={() => <Compose
 								setPost={(e) => this.props.setPost(e)}
 								post={this.props.post} />}/>
 						
-						<Route exact path="/messages" component={Messages} />
-						<Route exact path="/notifications" component={Notifications} />
+						<Route exact path="/messages" component={UnderDevelopment} />
+						<Route exact path="/notifications" component={UnderDevelopment} />
 						<Route path="/:id" component={User} />
 					</Switch>
 				</div>

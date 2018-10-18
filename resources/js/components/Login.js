@@ -45,16 +45,11 @@ class Login extends Component {
     render() {
         return (
             <div className='component-login'>
-	            <form onSubmit={(e)=>this.handleSubmit(e)}>
-					<div className='form-group'>
-					   <label htmlFor='email'>Email address</label>
-					   <input type='email' className='form-control' id='email' onChange={(e)=>this.handleInput('email', e)}  />
-					</div>
-					<div className='form-group'>
-					   <label htmlFor='password'>Password</label>
-					   <input type='password' className='form-control' id='password' onChange={(e)=>this.handleInput('password', e)} />
-					</div>
-					<button type='submit' className='btn btn-primary'>Submit</button>
+                <img src ={url + "/images/logo.png"} />
+                <form onSubmit={(e)=>this.handleSubmit(e)}>
+                    <input placeholder='email' type='email' id='email' onChange={(e)=>this.handleInput('email', e)}  />
+                    <input placeholder='password' type='password' id='password' onChange={(e)=>this.handleInput('password', e)} />
+                    <button type='submit' className='btn btn-block'>Submit</button>
 				</form>
             </div>
         );

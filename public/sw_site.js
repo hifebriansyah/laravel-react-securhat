@@ -76,44 +76,50 @@ module.exports = __webpack_require__(105);
 /***/ 105:
 /***/ (function(module, exports) {
 
-var cacheName = 'v1';
+var cacheName = 'v2';
 
-// Call Install Event
-self.addEventListener('install', function (e) {
-  //console.log('Service Worker: Installed');
+var currentCache = {
+    offline: 'offline-cache' + cacheName
+};
+
+var offlineUrl = 'offline.html';
+
+self.addEventListener('install', function (event) {
+    event.waitUntil(caches.open(currentCache.offline).then(function (cache) {
+        return cache.addAll([
+        //'./img/offline.svg',
+        offlineUrl]);
+    }));
 });
 
 // Call Activate Event
 self.addEventListener('activate', function (e) {
-  //console.log('Service Worker: Activated');
-  // Remove unwanted caches
-  e.waitUntil(caches.keys().then(function (cacheNames) {
-    return Promise.all(cacheNames.map(function (cache) {
-      if (cache !== cacheName) {
-        //console.log('Service Worker: Clearing Old Cache');
-        return caches.delete(cache);
-      }
+    console.log('Service Worker: Activated');
+    // Remove unwanted caches
+    e.waitUntil(caches.keys().then(function (cacheNames) {
+        return Promise.all(cacheNames.map(function (cache) {
+            if (cache !== cacheName) {
+                //console.log('Service Worker: Clearing Old Cache');
+                return caches.delete(cache);
+            }
+        }));
     }));
-  }));
 });
 
-// Call Fetch Event
-self.addEventListener('fetch', function (e) {
-  //console.log('Service Worker: Fetching');
-  e.respondWith(fetch(e.request).then(function (res) {
-    // Make copy/clone of response
-    var resClone = res.clone();
-    // Open cahce
-    caches.open(cacheName).then(function (cache) {
-      // Add response to cache
-      cache.put(e.request, resClone);
-    });
-    return res;
-  }).catch(function (err) {
-    return caches.match(e.request).then(function (res) {
-      return res;
-    });
-  }));
+self.addEventListener('fetch', function (event) {
+    // request.mode = navigate isn't supported in all browsers
+    // so include a check for Accept: text/html header.
+    if (event.request.mode === 'navigate' || event.request.method === 'GET' && event.request.headers.get('accept').includes('text/html')) {
+        event.respondWith(fetch(event.request.url).catch(function (error) {
+            // Return the offline page
+            return caches.match(offlineUrl);
+        }));
+    } else {
+        // Respond with everything else if we can
+        event.respondWith(caches.match(event.request).then(function (response) {
+            return response || fetch(event.request);
+        }));
+    }
 });
 
 /***/ })

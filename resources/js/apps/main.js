@@ -20,7 +20,9 @@ import {
 	faRetweet,
 	faTimes,
 	faComment,
-	faHeart
+	faHeart,
+	faPowerOff,
+	faHeartbeat
 } from '@fortawesome/free-solid-svg-icons'
 
 library.add(faUser);
@@ -33,6 +35,8 @@ library.add(faRetweet);
 library.add(faTimes);
 library.add(faComment);
 library.add(faHeart);
+library.add(faPowerOff);
+library.add(faHeartbeat);
 
 store.subscribe(() => {
 	//console.log(store.getState());

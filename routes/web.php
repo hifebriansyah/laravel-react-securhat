@@ -18,7 +18,7 @@ Route::get('/login', function () {
 
 Route::get('/{path?}', function () {
     return view('main');
-})->where('path', '(.*)');
+})->where('path', '^((?!gen).)*$');
 
 
 Route::get('/img', function()
