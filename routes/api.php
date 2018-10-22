@@ -26,6 +26,8 @@ Route::group(['namespace' => 'API'], function () {
 
 			Route::prefix('/{id}')->group(function () {
 				Route::get('/comments', 'PostController@comments');
+				Route::post('/share', 'PostController@share');
+				Route::post('/like', 'PostController@like');
 				Route::delete('/', 'PostController@destroy');
 			});
 		});

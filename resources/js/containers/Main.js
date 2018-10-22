@@ -20,12 +20,52 @@ class Main extends React.Component {
 
 	checkAuth() {
 		if(this.props.auth.token === false || localStorage.getItem('token') === null) {
-			localStorage.getItem('token');
+			localStorage.removeItem('token');
 		    window.location.replace('./login');
 		}
 
 		return true;
 	}
+
+    likeClick(id) {
+        fetch(url+"/api/post/"+id+"/like", {
+            method: 'POST',
+            headers: {
+                "Content-Type": "application/json",
+                'Authorization': 'Bearer ' + localStorage.getItem('token')
+            }
+        })
+        .then(response => {
+            if(response.status == 401){
+                this.props.setAuthToken(false)
+                
+                return Promise.reject()
+            }
+
+            return response.json();
+        })
+        .then(result => {
+            var dom = document.querySelector("span[data-like='"+id+"']")
+            var icon = document.querySelectorAll("svg[data-like='"+id+"']")
+            var val = dom.innerHTML;
+
+            if(result.data.attached){
+                dom.innerHTML = parseInt(val)+1 || 1;
+
+                [].map.call(icon, function(el) {
+                    el.classList.add('attach');
+                });
+            }
+
+            if(result.data.detached){
+                dom.innerHTML = parseInt(val)-1 || '';
+
+                [].map.call(icon, function(el) {
+                    el.classList.remove('attach');
+                });
+            }
+        });
+    }
 
 	fabClick() {
 		if(this.props.fab.to == "/compose#save"){
@@ -38,9 +78,20 @@ class Main extends React.Component {
 	            }
 	        })
 	        .then(response => {
-	            return response.json();
+                if(response.status == 401){
+                    this.props.setAuthToken(false)
+                    
+                    return Promise.reject()
+                }
+
+				return response.json();
 	        })
 	        .then(result => {
+                if(result.errors){
+                	this.props.setPostErrors(result.errors);
+                	return
+                }
+
 	        	this.props.clearPost();
 	        	this.props.submitPost(result.data);
 	        	this.props.setFab({path:"submitted", icon:"times", to:"/"});
@@ -76,6 +127,7 @@ class Main extends React.Component {
 						<Route exact
 							path="/"
 							render={() => <Posts
+                            likeClick={(id) => this.likeClick(id)}
 							concatPosts={(e) => this.props.concatPosts(e)}
 							isMorePosts={(e) => this.props.isMorePosts(e)}
 							setPostsHref={(e) => this.props.setPostsHref(e)}
@@ -167,6 +219,12 @@ const mapDispatchToProps = (dispatch) => {
         setAuthToken: (fab) => {
             dispatch({
                 type: "SET_AUTH_TOKEN",
+                payload: fab
+            });
+        },
+        setPostErrors: (fab) => {
+            dispatch({
+                type: "SET_POST_ERRORS",
                 payload: fab
             });
         }

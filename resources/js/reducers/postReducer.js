@@ -2,7 +2,8 @@ const defPostState = {
     body:"",
     title:"",
     submitted:"",
-    submittedClass:""
+    submittedClass:"",
+    errors:[]
 }
 
 const postReducer = (state = {...defPostState}, action) => {
@@ -27,6 +28,12 @@ const postReducer = (state = {...defPostState}, action) => {
                 ...state,
                 submitted: action.payload,
                 submittedClass: "submitted"
+            };
+            break;
+        case "SET_POST_ERRORS":
+            state = {
+                ...state,
+                errors: action.payload
             };
             break;
     }

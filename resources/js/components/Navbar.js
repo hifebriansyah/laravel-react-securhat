@@ -9,7 +9,7 @@ const Navbar = (props) => {
 				<Link className="nav-link" to="/"><FontAwesomeIcon icon="home" /></Link>
 				<Link className="nav-link" to="/messages"><FontAwesomeIcon icon="envelope" /></Link>
 				<Link className="nav-link" to="/notifications"><FontAwesomeIcon icon="bell" /></Link>
-				<a className="nav-link" onClick={(e) => props.signOut(e)}><FontAwesomeIcon icon="power-off" /></a>
+				<Link className="nav-link" to="#out" onClick={(e) => props.signOut(e)}><FontAwesomeIcon icon="power-off" /></Link>
 			</div>
 		</nav>
 	)

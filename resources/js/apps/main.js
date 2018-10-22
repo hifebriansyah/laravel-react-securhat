@@ -9,7 +9,7 @@ import store from "../store";
 
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-
+import {far} from '@fortawesome/free-regular-svg-icons'
 import {
 	faUser,
 	faBell,
@@ -17,7 +17,7 @@ import {
 	faHome,
 	faPen,
 	faCheck,
-	faRetweet,
+	faShareSquare,
 	faTimes,
 	faComment,
 	faHeart,
@@ -25,18 +25,21 @@ import {
 	faHeartbeat
 } from '@fortawesome/free-solid-svg-icons'
 
-library.add(faUser);
-library.add(faBell);
-library.add(faEnvelope);
-library.add(faHome);
-library.add(faPen);
-library.add(faCheck);
-library.add(faRetweet);
-library.add(faTimes);
-library.add(faComment);
-library.add(faHeart);
-library.add(faPowerOff);
-library.add(faHeartbeat);
+library.add(
+	far,
+	faUser,
+	faBell,
+	faEnvelope,
+	faHome,
+	faPen,
+	faCheck,
+	faShareSquare,
+	faTimes,
+	faComment,
+	faHeart,
+	faPowerOff,
+	faHeartbeat
+);
 
 store.subscribe(() => {
 	//console.log(store.getState());

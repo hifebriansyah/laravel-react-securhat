@@ -6,7 +6,7 @@ class Post extends Model
 {
     protected $fillable = ['title', 'body', 'user_id', 'img_src'];
     protected $hidden = ['updated_at', 'user_id', 'likes'];
-    protected $appends = ['like_counts', 'liked', 'comments', 'comment_counts', 'commented'];
+    protected $appends = ['like_counts', 'liked', 'comments', 'comment_counts', 'commented', 'share_counts', 'shared'];
 
     protected static $path = '/uploads/posts';
 
@@ -18,6 +18,16 @@ class Post extends Model
     public static function relate($id = null)
     {
         return self::with('user')->find($id);
+    }
+
+    public static function share($id)
+    {
+        return self::find($id)->shares()->toggle(auth()->id());
+    }
+
+    public static function like($id)
+    {
+        return self::find($id)->likes()->toggle(auth()->id());
     }
 
     public function comments()
@@ -33,6 +43,11 @@ class Post extends Model
     public function likes()
     {
         return $this->belongsToMany('App\Models\User', 'post_likes')->withTimestamps()->latest();
+    }
+
+    public function shares()
+    {
+        return $this->belongsToMany('App\Models\User', 'post_shares')->withTimestamps()->latest();
     }
 
     public static function store()
@@ -77,6 +92,11 @@ class Post extends Model
         return (Boolean) $this->comments()->where('user_id', auth()->id())->count();
     }
 
+    public function getSharedAttribute()
+    {
+        return (Boolean) $this->shares()->where('user_id', auth()->id())->count();
+    }
+
     public function getCommentsAttribute()
     {
         return $this->comments()->with('user')->take(3)->get();
@@ -85,5 +105,10 @@ class Post extends Model
     public function getCommentCountsAttribute()
     {
         return $this->comments()->count();
+    }
+
+    public function getShareCountsAttribute()
+    {
+        return $this->shares()->count();
     }
 }

@@ -31,6 +31,16 @@ class PostController extends Controller
         return $this->respond(Model::store());
     }
 
+    public function like($id)
+    {
+        return $this->respond(Model::like($id));
+    }
+
+    public function share($id)
+    {
+        return $this->respond(Model::share($id));
+    }
+
     public function destroy($id)
     {
         return $this->respond(Model::find($id)->delete());

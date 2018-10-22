@@ -16,6 +16,7 @@ class DatabaseSeeder extends Seeder
         $this->call(PostsTableSeeder::class);
         $this->call(CommentsTableSeeder::class);
         $this->call(PostLikesTableSeeder::class);
+        $this->call(PostSharesTableSeeder::class);
         $this->call(OauthTableSeeder::class);
         Schema::enableForeignKeyConstraints();
     }

@@ -29,6 +29,7 @@ class Posts extends Component {
 
                 if(response.status == 401){
                     this.props.setAuthToken(false)
+
                     return Promise.reject({
                         status: response.status,
                         statusText: response.statusText
@@ -55,10 +56,9 @@ class Posts extends Component {
         var keys =[];
 
         this.props.posts.data.map(post => {
-
             if(keys.indexOf(post.id) == -1){
                 keys.push(post.id);
-                items.push(<Post post={post} key={post.id}/>);
+                items.push(<Post post={post} key={post.id} likeClick={(id) => this.props.likeClick(id)} />);
             }
         });
 
