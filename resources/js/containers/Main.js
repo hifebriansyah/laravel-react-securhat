@@ -13,6 +13,8 @@ import Navbar from '../components/Navbar';
 import Listener from '../components/Listener';
 import UnderDevelopment from '../components/UnderDevelopment';
 
+var y = 0
+
 class Main extends React.Component {
 	shouldComponentUpdate() {
 		return this.checkAuth()
@@ -26,6 +28,9 @@ class Main extends React.Component {
 
 		return true;
 	}
+
+    commentClick(id) {
+    }
 
     likeClick(id) {
         fetch(url+"/api/post/"+id+"/like", {
@@ -45,24 +50,20 @@ class Main extends React.Component {
             return response.json();
         })
         .then(result => {
-            var dom = document.querySelector("span[data-like='"+id+"']")
-            var icon = document.querySelectorAll("svg[data-like='"+id+"']")
-            var val = dom.innerHTML;
+            var post = this.props.posts.data[id];
 
             if(result.data.attached){
-                dom.innerHTML = parseInt(val)+1 || 1;
-
-                [].map.call(icon, function(el) {
-                    el.classList.add('attach');
-                });
+                this.props.setPostsLiked({
+                    key : id,
+                    val : true
+                })
             }
 
             if(result.data.detached){
-                dom.innerHTML = parseInt(val)-1 || '';
-
-                [].map.call(icon, function(el) {
-                    el.classList.remove('attach');
-                });
+                this.props.setPostsLiked({
+                    key : id,
+                    val : false
+                })
             }
         });
     }
@@ -114,7 +115,8 @@ class Main extends React.Component {
 				<div>	
 					<Route render={(props) => <Listener {...props}
 						setFab={(e) => this.props.setFab(e)}
-						setPostsClass={(e) => this.props.setPostsClass(e)} />} />
+						setPostsClass={(e) => this.props.setPostsClass(e)}
+                        posts={this.props.posts} />} />
 
 					<Navbar
 						signOut={(e) => this.signOut(e)} />
@@ -126,8 +128,9 @@ class Main extends React.Component {
 					<Switch>
 						<Route exact
 							path="/"
-							render={() => <Posts
+							render={(props) => <Posts {...props}
                             likeClick={(id) => this.likeClick(id)}
+                            commentClick={(id) => this.commentClick(id)}
 							concatPosts={(e) => this.props.concatPosts(e)}
 							isMorePosts={(e) => this.props.isMorePosts(e)}
 							setPostsHref={(e) => this.props.setPostsHref(e)}
@@ -225,6 +228,12 @@ const mapDispatchToProps = (dispatch) => {
         setPostErrors: (fab) => {
             dispatch({
                 type: "SET_POST_ERRORS",
+                payload: fab
+            });
+        },
+        setPostsLiked: (fab) => {
+            dispatch({
+                type: "SET_POSTS_LIKED",
                 payload: fab
             });
         }

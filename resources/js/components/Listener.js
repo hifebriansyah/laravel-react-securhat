@@ -1,9 +1,16 @@
 import React, { Component } from "react"
-import { Link } from "react-router-dom"
 
 class Listener extends Component {
 	componentDidMount() {
 		this.onRouteChanged(this.props.location.pathname)
+	}
+
+	shouldComponentUpdate(prevProps) {
+		if(this.props.location.pathname == "/" && window.pageYOffset != 0){
+        	window.y = window.pageYOffset;
+		}
+
+		return true;
 	}
 
 	componentDidUpdate(prevProps) {

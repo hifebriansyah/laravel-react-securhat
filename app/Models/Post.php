@@ -11,8 +11,8 @@ class Post extends Model
     protected static $path = '/uploads/posts';
 
     public static $rules = [
-        'title' => 'max:255',
-        'body' => 'required',
+        'title' => 'max:150',
+        'body' => 'required|max:300',
     ];
 
     public static function relate($id = null)

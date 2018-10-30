@@ -9,6 +9,10 @@ class Posts extends Component {
         this.handleScroll = this.loadMore.bind(this);
     }
 
+    componentDidUpdate(){
+        //window.scroll(0, window.y);
+    }
+
     loadMore() {
         var target = url+"/api/post";
 
@@ -43,7 +47,7 @@ class Posts extends Component {
                     this.props.setPostsHref(result["next_page_url"]);
                 }
 
-                if(result["current_page"]+1 == result["last_page"]) {
+                if(result["current_page"] >= result["last_page"]) {
                     this.props.isMorePosts(false);
                 }
             });
@@ -53,13 +57,15 @@ class Posts extends Component {
         const loader = <li className="loader" key={0}>Loading</li>;
 
         var items = [];
-        var keys =[];
 
         this.props.posts.data.map(post => {
-            if(keys.indexOf(post.id) == -1){
-                keys.push(post.id);
-                items.push(<Post post={post} key={post.id} likeClick={(id) => this.props.likeClick(id)} />);
-            }
+            items.push(
+                <Post
+                    post={post}
+                    key={post.id}
+                    commentClick={(id) => this.props.commentClick(id)}
+                    likeClick={(id) => this.props.likeClick(id)} />
+            );
         });
 
         return (

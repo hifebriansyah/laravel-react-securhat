@@ -31,7 +31,7 @@ const Post = (props) => {
 		                    </Link>
 		                </div>
 		                <div className="col">
-		                    <Link className="nav-link ripple" to="/"><FontAwesomeIcon icon={commentIcon} /> {props.post.comment_counts}</Link>
+		                    <Link className="nav-link ripple" to="/" onClick={(id) => props.commentClick(props.post.id)}><FontAwesomeIcon icon={commentIcon} /> {props.post.comment_counts}</Link>
 		                </div>
 		                <div className="col">
 		                    <Link className="nav-link ripple" to="/"><FontAwesomeIcon icon={shareIcon} /> {props.post.share_counts}</Link>
