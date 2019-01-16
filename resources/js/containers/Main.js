@@ -4,6 +4,7 @@ import createHistory from "history/createBrowserHistory"
 import {connect} from "react-redux";
 
 import Posts from '../components/Posts';
+import PostComments from '../components/PostComments';
 import Notifications from '../components/Notifications';
 import Messages from '../components/Messages';
 import Compose from '../components/Compose';
@@ -29,7 +30,8 @@ class Main extends React.Component {
 		return true;
 	}
 
-    commentClick(id) {
+    commentClick(post) {
+        //this.props.setSelectedPost(post);
     }
 
     likeClick(id) {
@@ -130,7 +132,6 @@ class Main extends React.Component {
 							path="/"
 							render={(props) => <Posts {...props}
                             likeClick={(id) => this.likeClick(id)}
-                            commentClick={(id) => this.commentClick(id)}
 							concatPosts={(e) => this.props.concatPosts(e)}
 							isMorePosts={(e) => this.props.isMorePosts(e)}
 							setPostsHref={(e) => this.props.setPostsHref(e)}
@@ -141,8 +142,18 @@ class Main extends React.Component {
 						<Route exact
 							path="/compose"
 							render={() => <Compose
-								setPost={(e) => this.props.setPost(e)}
-								post={this.props.post} />}/>
+								setData={(e) => this.props.setPost(e)}
+								data={this.props.post} />}/>
+
+
+                        <Route exact
+                            path="/post/:id/comments"
+                            render={(props) => <PostComments {...props}
+                                action_post_comments={this.props.action_post_comments}
+                                likeClick={(id) => this.likeClick(id)}
+                                setPostComment={(e) => this.props.setPostComment(e)}
+                                posts={this.props.posts}
+                                postComment={this.props.postComment} />}/>
 						
 						<Route exact path="/messages" component={UnderDevelopment} />
 						<Route exact path="/notifications" component={UnderDevelopment} />
@@ -158,6 +169,7 @@ const mapStateToProps = (state) => {
   return {
       post: state.post,
       posts: state.posts,
+      postComment: state.postComment,
       fab: state.fab,
       auth: state.auth
   };
@@ -168,6 +180,12 @@ const mapDispatchToProps = (dispatch) => {
         setPost: (body) => {
             dispatch({
                 type: "SET_POST_BODY",
+                payload: body
+            });
+        },
+        setPostComment: (body) => {
+            dispatch({
+                type: "SET_POST_COMMENT_BODY",
                 payload: body
             });
         },
@@ -236,7 +254,33 @@ const mapDispatchToProps = (dispatch) => {
                 type: "SET_POSTS_LIKED",
                 payload: fab
             });
-        }
+        },
+        setSelectedPost: (fab) => {
+            dispatch({
+                type: "SET_SELECTED_POST",
+                payload: fab
+            });
+        },
+        action_post_comments: {
+            concat: (fab) => {
+                dispatch({
+                    type: "CONCAT_POST_COMMENTS",
+                    payload: fab
+                });
+            },
+            isMore: (fab) => {
+                dispatch({
+                    type: "IS_MORE_POST_COMMENTS",
+                    payload: fab
+                });
+            },
+            setHref: (fab) => {
+                dispatch({
+                    type: "SET_POST_COMMENTS_HREF",
+                    payload: fab
+                });
+            }
+        },
     };
 };
 

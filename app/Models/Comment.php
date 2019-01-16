@@ -7,7 +7,9 @@ use Illuminate\Database\Eloquent\Model;
 class Comment extends Model
 {
     protected $fillable = ['post_id', 'body', 'user_id'];
-    protected $hidden = ['created_at', 'updated_at', 'user_id', 'post_id'];
+    protected $hidden = ['created_at', 'user_id', 'post_id'];
+    protected $appends = ['index'];
+    protected $dateFormat = 'U';
 
     public static $rules = [
         'post_id' => 'required',
@@ -38,5 +40,10 @@ class Comment extends Model
 
             return self::relate($model->id);
         }
+    }
+
+    public function getIndexAttribute()
+    {
+        return ($this->updated_at->getTimestamp()).$this->id;
     }
 }

@@ -6,7 +6,8 @@ class Post extends Model
 {
     protected $fillable = ['title', 'body', 'user_id', 'img_src'];
     protected $hidden = ['updated_at', 'user_id', 'likes'];
-    protected $appends = ['like_counts', 'liked', 'comments', 'comment_counts', 'commented', 'share_counts', 'shared'];
+    protected $appends = ['index', 'like_counts', 'liked', 'comments', 'comment_counts', 'commented', 'share_counts', 'shared'];
+    protected $dateFormat = 'U';
 
     protected static $path = '/uploads/posts';
 
@@ -42,12 +43,12 @@ class Post extends Model
 
     public function likes()
     {
-        return $this->belongsToMany('App\Models\User', 'post_likes')->withTimestamps()->latest();
+        return $this->belongsToMany('App\Models\User', 'post_likes');
     }
 
     public function shares()
     {
-        return $this->belongsToMany('App\Models\User', 'post_shares')->withTimestamps()->latest();
+        return $this->belongsToMany('App\Models\User', 'post_shares');
     }
 
     public static function store()
@@ -99,7 +100,7 @@ class Post extends Model
 
     public function getCommentsAttribute()
     {
-        return $this->comments()->with('user')->take(3)->get();
+        return $this->comments()->with('user')->take(15)->get();
     }
 
     public function getCommentCountsAttribute()
@@ -110,5 +111,10 @@ class Post extends Model
     public function getShareCountsAttribute()
     {
         return $this->shares()->count();
+    }
+
+    public function getIndexAttribute($value)
+    {
+        return ($this->updated_at->getTimestamp()).$this->id;
     }
 }

@@ -23,7 +23,8 @@ class PostController extends Controller
                 ->comments()
                 ->with('user')
                 ->latest()
-                ->paginate());
+                ->paginate()
+        );
     }
 
     public function store()

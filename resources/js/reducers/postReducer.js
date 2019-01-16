@@ -3,6 +3,7 @@ const defPostState = {
     title:"",
     submitted:"",
     submittedClass:"",
+    selected:"",
     errors:[]
 }
 
@@ -34,6 +35,12 @@ const postReducer = (state = {...defPostState}, action) => {
             state = {
                 ...state,
                 errors: action.payload
+            };
+            break;
+        case "SET_SELECTED_POST":
+            state = {
+                ...state,
+                selected: action.payload
             };
             break;
     }

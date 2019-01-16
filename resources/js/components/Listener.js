@@ -29,7 +29,7 @@ class Listener extends Component {
 			path = "new";
 			to = "/compose";
 			postsClass = "";
-		} else if (pathname == "/compose") {
+		} else if (pathname == "/compose" || pathname == "/post/1/comments") {
 			path = "submit";
 			icon = "check";
 			to = "/compose#save";

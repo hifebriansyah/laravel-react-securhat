@@ -15,11 +15,12 @@ class CommentsTableSeeder extends Seeder
     {
         $faker = Faker::create();
 
-        foreach (range(1, 30) as $key => $value) {
+        foreach (range(1, 3000) as $key => $value) {
         	Comment::create([
 	            'user_id' => rand(1,3),
-	            'post_id' => rand(1,10),
-	            'body' => $faker->paragraph(3)
+	            'post_id' => rand(1,100),
+	            'body' => $faker->paragraph(3),
+                'created_at' => $faker->dateTime()
 	        ]);
         }
     }

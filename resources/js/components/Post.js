@@ -3,7 +3,6 @@ import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 const Post = (props) => {
-
 	if(props.post){
 
 	    var style = {
@@ -15,7 +14,7 @@ const Post = (props) => {
 	    var shareIcon = (props.post.shared) ? 'share-square' : ['far', 'share-square'];
 
 		return(
-		    <li className="paper" key={props.post.id}>
+		    <li className="paper" key={props.post.index}>
 		        <div className="header">
 		            <div className="img" style={style}></div>
 		            <a>{props.post.user.name}</a>
@@ -24,14 +23,14 @@ const Post = (props) => {
 		        <div className={props.footer + " footer"}>
 		            <div className="row no-gutters">
 		                <div className="col">
-		                    <Link className="nav-link ripple" to="/" onClick={(id) => props.likeClick(props.post.id)} >
-		                    	<FontAwesomeIcon data-like={props.post.id} className={likeClass + " solid"} icon="heart"/>
-		                    	<FontAwesomeIcon data-like={props.post.id} className={likeClass + " line"} icon={['far', 'heart']}/>
-		                    	&nbsp;<span data-like={props.post.id} >{props.post.like_counts}</span>
-		                    </Link>
+		                    <a className="nav-link ripple" onClick={(id) => props.likeClick(props.post.id)} >
+		                    	<FontAwesomeIcon className={likeClass + " solid"} icon="heart"/>
+		                    	<FontAwesomeIcon className={likeClass + " line"} icon={['far', 'heart']}/>
+		                    	&nbsp;<span>{props.post.like_counts}</span>
+		                    </a>
 		                </div>
 		                <div className="col">
-		                    <Link className="nav-link ripple" to="/" onClick={(id) => props.commentClick(props.post.id)}><FontAwesomeIcon icon={commentIcon} /> {props.post.comment_counts}</Link>
+		                    <Link className="nav-link ripple" to={"/post/"+props.post.id+"/comments"}><FontAwesomeIcon icon={commentIcon} /> {props.post.comment_counts}</Link>
 		                </div>
 		                <div className="col">
 		                    <Link className="nav-link ripple" to="/"><FontAwesomeIcon icon={shareIcon} /> {props.post.share_counts}</Link>
@@ -42,9 +41,7 @@ const Post = (props) => {
 		)
 	}
 
-	return(
-		<div></div>
-	)
+	return(<div></div>)
 }
 
 export default Post ;

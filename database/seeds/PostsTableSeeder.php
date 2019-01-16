@@ -15,11 +15,12 @@ class PostsTableSeeder extends Seeder
     {
         $faker = Faker::create();
 
-        foreach (range(1, 30) as $key => $value) {
+        foreach (range(1, 100) as $key => $value) {
         	Post::create([
 	            'user_id' => rand(1,3),
 	            'title' => $faker->sentence(5),
-	            'body' => $faker->paragraph(3)
+	            'body' => $faker->paragraph(3),
+                'created_at' => $faker->dateTime()
 	        ]);
         }
     }

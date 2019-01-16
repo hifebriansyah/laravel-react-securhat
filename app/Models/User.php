@@ -12,7 +12,8 @@ class User extends Authenticatable
     use HasApiTokens, Notifiable;
 
     protected $fillable = ['name', 'email', 'password', 'img'];
-    protected $appends = ['img_src'];
+    protected $appends = ['index', 'img_src'];
+    protected $dateFormat = 'U';
 
     const IMG_PATH = "uploads/users";
     
@@ -110,7 +111,11 @@ class User extends Authenticatable
 
     public function getImgSrcAttribute()
     {
-
         return ($this->img) ? url($this::IMG_PATH.'/'.$this->img) : null;
+    }
+
+    public function getIndexAttribute($value)
+    {
+        return ($this->updated_at->getTimestamp()).$this->id;
     }
 }

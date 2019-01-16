@@ -10,7 +10,7 @@ class Posts extends Component {
     }
 
     componentDidUpdate(){
-        //window.scroll(0, window.y);
+        window.scroll(0, window.y);
     }
 
     loadMore() {
@@ -55,16 +55,17 @@ class Posts extends Component {
 
     render() {
         const loader = <li className="loader" key={0}>Loading</li>;
+        const self = this;
 
         var items = [];
 
-        this.props.posts.data.map(post => {
+        this.props.posts.data.forEach(function(post) {
             items.push(
                 <Post
                     post={post}
                     key={post.id}
-                    commentClick={(id) => this.props.commentClick(id)}
-                    likeClick={(id) => this.props.likeClick(id)} />
+                    commentClick={(post) => self.props.commentClick(post)}
+                    likeClick={(id) => self.props.likeClick(id)} />
             );
         });
 

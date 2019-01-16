@@ -19,7 +19,8 @@ class CreatePostsTable extends Migration
             $table->string('title', 255)->nullable();
             $table->text('body');
             $table->text('img')->nullable();
-            $table->timestamps();
+            $table->integer('created_at');
+            $table->integer('updated_at');
 
             $table->foreign('user_id')->references('id')->on('users');
 
